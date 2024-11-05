@@ -9,7 +9,7 @@ using TillaHook.Extensions;
 namespace TillaHook
 {
     [BepInDependency("Lofiat.Newtilla", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInPlugin(Constants.Guid, Constants.Name, Constants.Version), BepInDependency("legoandmars.utilla", "1.6.14")]
+    [BepInPlugin(Constants.Guid, Constants.Name, Constants.Version), BepInDependency("org.legoandmars.gorillatag.utilla", "1.6.14")]
     public class TillaHook : BaseUnityPlugin
     {
         // instance

@@ -13,7 +13,7 @@ namespace TillaHook.Hooks
     internal class UtillaHook : Hook
     {
         public override string Tilla => "Utilla";
-        public override string Guid => "legoandmars.utilla";
+        public override string Guid => "org.legoandmars.gorillatag.utilla";
 
         private PluginInfo pluginInfo;
         private Utilla.GamemodeManager gamemodeManager;
