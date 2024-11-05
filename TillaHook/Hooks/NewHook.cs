@@ -48,7 +48,7 @@ namespace TillaHook.Hooks
         {
             Logging.Info("Game initialized");
 
-            TillaHook.OnGameInitialized?.Invoke();
+            TillaHook.TriggerGameInit();
 
             NetworkSystem.Instance.OnJoinedRoomEvent += RoomJoined;
             NetworkSystem.Instance.OnReturnedToSinglePlayer += RoomLeft;
@@ -60,14 +60,14 @@ namespace TillaHook.Hooks
 
             ConstructEventArgs(out room);
 
-            TillaHook.OnRoomJoined?.Invoke(room);
+            TillaHook.TriggerRoomJoin(room);
         }
 
         public void RoomLeft()
         {
             Logging.Info("Room left");
 
-            TillaHook.OnRoomLeft?.Invoke(room);
+            TillaHook.TriggerRoomLeave(room);
         }
     }
 }

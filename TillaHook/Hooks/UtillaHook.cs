@@ -39,7 +39,7 @@ namespace TillaHook.Hooks
         {
             Logging.Info("Game initialized");
 
-            TillaHook.OnGameInitialized?.Invoke();
+            TillaHook.TriggerGameInit();
 
             SetGameModeManager();
         }
@@ -50,14 +50,14 @@ namespace TillaHook.Hooks
 
             ConstructEventArgs(out room);
 
-            TillaHook.OnRoomJoined?.Invoke(room);
+            TillaHook.TriggerRoomJoin(room);
         }
 
         public void RoomLeft(object sender, EventArgs e)
         {
             Logging.Info("Room left");
 
-            TillaHook.OnRoomLeft?.Invoke(room);
+            TillaHook.TriggerRoomLeave(room);
         }
 
         public override void AddGameMode(GameModeWrapper[] gameModes, Action<string> onGameModeJoin = null, Action<string> onGameModeLeave = null)

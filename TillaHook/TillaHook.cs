@@ -14,7 +14,7 @@ namespace TillaHook
     {
         // instance
 
-        private static TillaHook Plugin;
+        internal static TillaHook Plugin;
 
         // hooks
 
@@ -22,11 +22,11 @@ namespace TillaHook
 
         // events
 
-        public static Action<RoomArgs> OnRoomJoined;
+        public static event Action<RoomArgs> OnRoomJoined;
 
-        public static Action<RoomArgs> OnRoomLeft;
+        public static event Action<RoomArgs> OnRoomLeft;
 
-        public static Action OnGameInitialized;
+        public static event Action OnGameInitialized;
 
         public static event Action<string> OnModdedJoin, OnModdedLeave;
 
@@ -103,5 +103,11 @@ namespace TillaHook
             Logging.Info($"Constructing hook {Hook}");
             Hook.Construct(pluginInfo);
         }
+
+        internal static void TriggerGameInit() => OnGameInitialized?.SafeInvoke();
+
+        internal static void TriggerRoomJoin(RoomArgs args) => OnRoomJoined?.SafeInvoke(args);
+
+        internal static void TriggerRoomLeave(RoomArgs args) => OnRoomLeft?.SafeInvoke(args);
     }
 }
